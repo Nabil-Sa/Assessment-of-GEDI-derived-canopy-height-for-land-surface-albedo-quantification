@@ -38,8 +38,27 @@ Where the $$f_{\text{iso}}$$ parameter characterizes the isotropic scattering be
 
 $$K_{\text{vol}} = \frac{\left(\frac{\pi}{2} - \xi\right) \cos\xi + \sin\xi}{\cos\theta_s + \cos\theta_v} - \frac{\pi}{4}$$
 
-where $$\xi$$ describes the scattering phase angle between the source of radiation (at angle $$\theta_s$$) and the satellite sensor (at angle $$\theta_v$$)
+where $$\xi$$ describes the scattering phase angle between the source of radiation (at angle $$\theta_s$$) and the satellite sensor (at angle $$\theta_v$$) coupled with:
 
-$$\cos\xi = \cos\theta_s \cos\theta_v + \sin\theta_s \sin\theta_v \cos\phi$$
+$$\cos\xi = \cos\theta_s \cos\theta_v + \sin\theta_s \sin\theta_v \cos\Delta\phi$$
 
+Where $\Delta\phi$ is derived from:
+
+$$\Delta\phi = \phi_s - \phi_v$$
+
+ $$K_{\text{geo}}$$ is gathered from the LiSparse-Reciprocal kernel which is constructed symmetrically and is expressed as:
+
+$$K_{\text{geo}} = \frac{1 + \cos\xi'}{2} \sec\theta'_s \sec\theta'_v - O(\theta'_s, \theta'_v, \Delta\phi)$$
+
+Where $O$ represents the overlap function that is written as:
+
+$$O(\theta'_s, \theta'_v, \Delta\phi) = \frac{1}{\pi} (\gamma - \sin\gamma \cos\gamma) \left(\sec\theta'_s + \sec\theta'_v\right)$$
+
+Where $$\gamma$$ is derived from distance ($$D$$) and overlap ratio ($$R$$) respectively. They are expressed as:
+
+$$D = \sqrt{\tan^2\theta'_s + \tan^2\theta'_v - 2\tan\theta'_s\tan\theta'_v\cos\Delta\phi}$$
+
+$$R = \frac{h}{b}\sqrt{\tan^2\theta'_s + \tan^2\theta'_v - 2\tan\theta'_s\tan\theta'_v\cos\Delta\phi}$$
+
+Where $$R$$ can be simplified into $$R = \frac{h}{b} \cdot D$$
 
