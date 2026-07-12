@@ -62,3 +62,13 @@ $$R = \frac{h}{b}\sqrt{\tan^2\theta'_s + \tan^2\theta'_v - 2\tan\theta'_s\tan\th
 
 Where $$R$$ can be simplified into $$R = \frac{h}{b} \cdot D$$
 
+#### 1.2.1 inter-sensor comparison
+Globally, in the context of the retrieval of surface derived indices, VIIRS has been described as achieving results sufficient to be considered a suitable successor to the MODIS product (Han et al, 2025, Liu et al, 2017). It's configurations are similar to that of MODIS, having a spectral range of $0.4\ \mu\text{m}$ to $12.5\ \mu\text{m}$. As previously mentioned, the MODIS product has been and is currently influenced by orbital drift, impacting Aqua and Terra's designated equatorial-crossing mean local times of 10:30 AM and 13:30 PM. As a result, NASA has performed inclination adjustment maneuvers (IAM) which involve the correction of the orbital inclination of a given instrument's satellite. This change in inclination can be expressed as:
+
+$$\Delta v = 2 v \sin\left(\frac{\Delta i}{2}\right)$$
+ 
+Where $$\Delta i$$ is the targeted adjustment, and $$\Delta v$$ is the velocity vector that is required to perform the burn that will realize the IAM. For both Aqua and Terra, NASA has ceased IAM's, with Terra having received it's last maneuver on Febuary 27, 2020 and Aqua one year later on March 8, 2021. When it comes to the comparison and cross-calibration of satellite missions, a frequently mentioned concept is the usage of pseudo invariant calibration sites (PICS). PICS are characterized by having high temporal stability and possessing high isotropy. Additionally, PICS feature an absence of flora and thus, they are generally situated in desert environments such as the Sahara and Antarctica. The combination of these factors allow for the observation of discrepancies like sensor bias, sensor degradation and orbital drift. As previously mentioned, the MODIS MCD43A3 product is influenced by orbital drift which has made Terra and Aqua deviate from their mean local times, causing an overestimation trend. This is also visible in a comparison of results from white sky albedo of the Niger-1 PICS, situated at 9.36° N, 20.41° E.
+
+<img width="1990" height="690" alt="afbeelding" src="https://github.com/user-attachments/assets/c0f39cc8-995d-46a9-bb8a-98ea55aeea16" />
+
+**Figure 1**. For the epoch of 2020-2025, MODIS has an increasingly higher trend as opposed to its previous more stable epoch in the Niger-1 PICS.
