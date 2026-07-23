@@ -4,7 +4,6 @@
 Niger, a landlocked country belonging to the Sahel region of Africa, is characterized by a latitudinal rainfall gradient that transitions from the sudanian zone in the south to the Sahara in the north. The Iullemeden aquifer system acts as the country's primary perennial water source and a large part of the hydrological landscape features vernal pools and ephemeral streams. The country has increasingly become a focal point in research and discussions regarding efforts of reversing desertification. Due to Niger's sensitive climate, quantifying the surface energy partitioning along with it's albedo dynamics is vital for assessing the ecological health of a climate vulnerable nation.
 
 # Area of interest and transect
-<img width="1235" height="807" alt="afbeelding" src="https://github.com/user-attachments/assets/47069104-9918-41de-9ae3-2f1754cd7fbb" />
 The image above shows the transect which goes along the latitudinal gradient of 13.5° to 19.5°. 
 
 ## Timeframe 
@@ -12,7 +11,7 @@ This study compares the means of 2000-2004 to 2020-2024.
 
 ## Comparative sensor analysis
 
-### 1.1 Method
+### 1. Introduction
 Albedo, which plays an important role in this study, is expressed as a value between 0 and 1. It is generally defined as a surface's ability to reflect light where in an earth science context lower values are found in deep water, grass and asphalt, while clouds and snow yield high values. In the Nigerien and broader Sahelian context, the way albedo is used can vary depending on the objective. For a study focusing on trends of greening and land cover changes, white sky albedo, also referred to as bi-hemispherical reflectance is often used due to it making the source of incoming light diffuse as opposed to black sky albedo which instead relies on the angle at which incoming light will hit a surface.
 
 White sky albedo can be calculated by first calculating the black sky albedo:
@@ -29,7 +28,7 @@ $$A = (1 - kd) \\text{bsa} + kd , \\text{wsa}$$
 
 Where $$kd$$ represents the diffuse fraction that differentiates between direct sunlight and diffuse light. In the context of the Sahel, $$kd$$ is frequently used to account for Aerosol Optical Depth. 
 
-### 1.2 Sensor consistency and Cross-Validation Analysis
+### 2. Sensor consistency and Cross-Validation Analysis
 Producing albedo measurements for a time series analysis of 24 years poses a specific challenge concerning orbital drift and sensor bias. The MODIS product which belongs to the Terra and Aqua satellites launched in 1999 and 2002, has been used frequently as a common approach to studies involving the quantification of albedo, however, recent evaluations (Feng et al., 2024) have suggested that while the influence of orbital drift is small, it could be biased in the context of a time series analysis. Cross validation was done using the VIIRS product (VNP43MA3) which was designed to be the successor of the MODIS product that was first launched in 2011 aboard of the NPP Suomi satellite. As opposed to MODIS MCD43A3 which has a resolution of 500 meters, the VNP43MA3 product has a native resolution of 1km which is reprojected to 500m in order to match MODIS. The bidirectional reflectance distribution function (BRDF) serves as a main mechanism in conceptualizing the behavior of anisotropic reflectance in relation to the viewing angle. Anisotropy is generally defined as the reflection of a given surface being directionally dependent while isotropy assumes a directionally independent reflection (Filip et al., 2015). Such properties play prominent roles in the design of kernel-driven BRDF models where the anisotropic behaviors of geometric and volumetric scattering are acquired by kernels and scaled by dynamic weights as seen in the Ross-Li model (Wanner et al., 1999). In the context of white sky albedo (WSA) where diffuse illumination is assumed, the same dynamic weights are used in combination with constants that contextualize the simulated environment of a hemisphere emitting diffuse radiation. This is expressed as the joint sum of the isotropic, geometric and volumetric parameters.
 
 $$\\text{wsa} = f_{iso} + (0.189184 \cdot f_{vol}) + (-1.377622 \cdot f_{geo})$$
@@ -62,7 +61,7 @@ $$R = \frac{h}{b}\sqrt{\tan^2\theta'_s + \tan^2\theta'_v - 2\tan\theta'_s\tan\th
 
 Where $$R$$ can be simplified into $$R = \frac{h}{b} \cdot D$$
 
-#### 1.2.1 inter-sensor comparison
+#### 2.2 inter-sensor comparison
 Globally, in the context of the retrieval of surface derived indices, VIIRS has been described as achieving results sufficient to be considered a suitable successor to the MODIS product (Han et al, 2025, Liu et al, 2017). It's configurations are similar to that of MODIS, having a spectral range of $0.4\ \mu\text{m}$ to $12.5\ \mu\text{m}$. As previously mentioned, the MODIS product has been and is currently influenced by orbital drift, impacting Aqua and Terra's designated equatorial-crossing mean local times of 10:30 AM and 13:30 PM. As a result, NASA has performed inclination adjustment maneuvers (IAM) which involve the correction of the orbital inclination of a given instrument's satellite. This change in inclination can be expressed as:
 
 $$\Delta v = 2 v \sin\left(\frac{\Delta i}{2}\right)$$
@@ -72,3 +71,6 @@ Where $$\Delta i$$ is the targeted adjustment, and $$\Delta v$$ is the velocity 
 <img width="1990" height="690" alt="afbeelding" src="https://github.com/user-attachments/assets/c0f39cc8-995d-46a9-bb8a-98ea55aeea16" />
 
 **Figure 1**. For the epoch of 2020-2025, MODIS has an increasingly higher trend as opposed to its previous more stable epoch in the Niger-1 PICS.
+
+##### 2.2.1 Spectral Band Difference Adjustment Factors
+In the comparison and intercalibration of sensors, inherent differences in their spectral response functions (SRFs) can exacerbate analyses (Scarino et al, 2016). These differences can be understood and accounted for by retrieving the Spectral Band Difference Adjustment Factor (SBAF).  
