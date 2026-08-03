@@ -73,4 +73,14 @@ Where $$\Delta i$$ is the targeted adjustment, and $$\Delta v$$ is the velocity 
 **Figure 1**. For the epoch of 2020-2025, MODIS has an increasingly higher trend as opposed to its previous more stable epoch in the Niger-1 PICS.
 
 ##### 2.2.1 Spectral Band Adjustment Factors
-Analyses of the comparison and intercalibration of sensors can be exacerbated by inherent differences in their relative spectral response functions (RSRs) (Scarino et al, 2016). These differences can be understood and accounted for by retrieving the Spectral Band Adjustment Factors (SBAFs) which are derived by convolving hyperspectral data from a given spectral library. The retrieval of an SBAF relies on a reference sensor and a target sensor where their 
+Analyses of the comparison and intercalibration of sensors can be exacerbated by inherent differences in their relative spectral responses (RSRs). These differences can be understood and accounted for by using Spectral Band Adjustment Factors (SBAFs) which are derived by convolving hyperspectral data from a given spectral library (Chander et al, 2013). The retrieval of an SBAF depends on a reference sensor and a target sensor where the RSRs are integrated with the observed reflectance of the spectral library, which after the SBAF can be calculated.
+
+$$\bar{\rho}_\lambda = \frac{\int \rho_\lambda \text{RSR}_\lambda \, d\lambda}{\int \text{RSR}_\lambda \, d\lambda}$$
+
+Where $$\bar{\rho}_\lambda$$ is the simulated band reflectance.
+
+And where $$\{\rho}_\lambda$$ is the spectral library's observed reflectance.
+
+$$\text{SBAF} = \frac{\bar{\rho}_{\text{reference}}}{\bar{\rho}_{\text{target}}} = \frac{\frac{\int \rho_\lambda \text{RSR}_{\lambda, \text{reference}} \, d\lambda}{\int \text{RSR}_{\lambda, \text{reference}} \, d\lambda}}{\frac{\int \rho_\lambda \text{RSR}_{\lambda, \text{target}} \, d\lambda}{\int \text{RSR}_{\lambda, \text{target}} \, d\lambda}}$$
+
+In 2016, the NASA Langley Research Center (LaRC) built a SCIAMACHY-based SBAF tool with data obtained from the Envisat program. comparisons between the SCIAMACHY-derived SBAFs were performed against those of Hyperion and Global Ozone Monitoring Experiment-2 (GOME-2), where it was shown that the SCIAMACHY-derived SBAFs fell within 0.1%–0.3% of SBAFs derived from the mentioned instruments (Scarino et al. 2016, Bovensmann et al. 1999).
