@@ -81,6 +81,12 @@ Where $$\bar{\rho}_\lambda$$ is the simulated band reflectance.
 
 And where $$\{\rho}_\lambda$$ is the spectral library's observed reflectance.
 
-$$\text{SBAF} = \frac{\bar{\rho}_{\text{reference}}}{\bar{\rho}_{\text{target}}} = \frac{\frac{\int \rho_\lambda \text{RSR}_{\lambda, \text{reference}} \, d\lambda}{\int \text{RSR}_{\lambda, \text{reference}} \, d\lambda}}{\frac{\int \rho_\lambda \text{RSR}_{\lambda, \text{target}} \, d\lambda}{\int \text{RSR}_{\lambda, \text{target}} \, d\lambda}}$$
+$$\text{SBAF} = \frac{\bar{\rho}{\lambda}_{\text{reference}}}{\bar{\rho}{\lambda}_{\text{target}}} = \frac{\frac{\int \rho_\lambda \text{RSR}_{\lambda, \text{reference}} \, d\lambda}{\int \text{RSR}_{\lambda, \text{reference}} \, d\lambda}}{\frac{\int \rho_\lambda \text{RSR}_{\lambda, \text{target}} \, d\lambda}{\int \text{RSR}_{\lambda, \text{target}} \, d\lambda}}$$
 
-In 2016, the NASA Langley Research Center (LaRC) built a SCIAMACHY-based SBAF tool with data obtained from the Envisat program. comparisons between the SCIAMACHY-derived SBAFs were performed against those of Hyperion and Global Ozone Monitoring Experiment-2 (GOME-2), where it was shown that the SCIAMACHY-derived SBAFs fell within 0.1%–0.3% of SBAFs derived from the mentioned instruments (Scarino et al. 2016, Bovensmann et al. 1999).
+In 2016, the NASA Langley Research Center (LaRC) built a SCIAMACHY-based SBAF tool with data obtained from the Envisat program. comparisons between the SCIAMACHY-derived SBAFs were done with those of Hyperion and Global Ozone Monitoring Experiment-2 (GOME-2), where it was shown that the SCIAMACHY-derived SBAFs fell within a small margin (0.1%–0.3%) of SBAFs derived from the mentioned counterparts (Scarino et al. 2016, Bovensmann et al. 1999). Table 1 shows the SBAF values used for intercalibration derived from the LaRC SCIAMACHY-based product.
+
+| MODIS AQUA Ch. | NPP-VIIRS-GT Ch. | SBAF | R^2 | Reference Spectra | Offset | StdErrReg% | StdErrSlp% |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 0.65 micron (Red)  | 0.68 micron (M5)  | 1.082 | 0.999  | 587  |-0.004661  | 0.456  | 1.3116e-01   |
+| 0.86 micron (NIR)  | 0.86 micron (M7)  | 1.015 | 0.999  | 587  | -0.002953  | 0.2942  | 8.3280e-02   |
+| 0.47 micron (SWIR)  | 0.48 micron (M3)  | 1.007 | 0.9968  | 587  | 0.003755  | 1.032  | 2.3485e-01   |
