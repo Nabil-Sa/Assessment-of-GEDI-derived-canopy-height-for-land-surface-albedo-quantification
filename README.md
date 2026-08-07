@@ -90,3 +90,6 @@ In 2016, the NASA Langley Research Center (LaRC) built a SCIAMACHY-based SBAF to
 | 0.65 micron (Red)  | 0.68 micron (M5)  | 1.082 | 0.999  | 587  |-0.004661  | 0.456  | 1.3116e-01   |
 | 0.86 micron (NIR)  | 0.86 micron (M7)  | 1.015 | 0.999  | 587  | -0.002953  | 0.2942  | 8.3280e-02   |
 | 0.47 micron (SWIR)  | 0.48 micron (M3)  | 1.007 | 0.9968  | 587  | 0.003755  | 1.032  | 2.3485e-01   |
+
+##### 2.2.2 Angular diversity
+Natural earth surfaces generally scatter radiation anisotropically, which can be captured and exploited through multi-angular observations from different view angles, taking into account the position of the sun (Cui et al, 2024). The anisotropical profile of a land surface exhibits different patterns based on the geophysical makeup of a surface, where a 'bell-shape' pattern is common for surfaces that are brighter when observed through smaller view zenith angles (VZA), while a 'bowl-shape' anisotropy describes a surface that is brighter at wider angles (Widlowski et al, 2004). 
