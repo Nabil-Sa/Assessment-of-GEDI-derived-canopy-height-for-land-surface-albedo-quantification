@@ -106,3 +106,5 @@ Natural earth surfaces generally scatter radiation anisotropically, which can be
 | **h11v08** | 654 | 384 (58.7%) | 209 (32.0%) |  61 (9.3%) | 283 (43.3%) | 4 (0.6%) |  266 (40.7%) |
 | **h22v15** | 616 | 400 (64.9%) | 159 (25.8%) | 57 (9.3%) | 232 (37.7%) | 29 (4.7%) |  337 (54.7%) |
 
+##### 2.2.3 Weighting multi-angular observations to RTLSR kernels
+To retrieve and weight the kernels, Non Negative Least Squares (NNLS) is used in order to constrain the volumetric and geometric weights to positive values. A diagonal weighting matrix of $w_i$ is used for observation $i$. $w_i$ by itself consists of $w_{\text{SZA}}$, $w_t$ and $w_d$, representing the Solar zenith angle of observation $i$, the temporal weight to observations closest to a given window and the angular component to prioritize unique angles and promote angular diversity. 
