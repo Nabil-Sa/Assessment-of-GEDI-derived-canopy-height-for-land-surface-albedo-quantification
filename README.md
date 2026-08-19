@@ -107,4 +107,33 @@ Natural earth surfaces generally scatter radiation anisotropically, which can be
 | **h22v15** | 616 | 400 (64.9%) | 159 (25.8%) | 57 (9.3%) | 232 (37.7%) | 29 (4.7%) |  337 (54.7%) |
 
 ##### 2.2.3 Weighting multi-angular observations to RTLSR kernels
-To retrieve and weight the kernels, Non Negative Least Squares (NNLS) is used in order to constrain the volumetric and geometric weights to positive values. A diagonal weighting matrix of $w_i$ is used for observation $i$. $w_i$ by itself consists of $w_{\text{SZA}}$, $w_t$ and $w_d$, representing the Solar zenith angle of observation $i$, the temporal weight to observations closest to a given window and the angular component to prioritize unique angles and promote angular diversity. 
+To retrieve and weight the kernels, Non Negative Least Squares (NNLS) is used in order to constrain the volumetric and geometric weights to positive values. A diagonal weighting matrix of $w_i$ is used for observation $i$. $w_i$ by itself is derived from $w_{\text{SZA}}$, $w_t$ and $w_d$, representing the Solar zenith angle of observation $i$, the temporal weight to observations closest to the median of a given window and the angular component to prioritize unique angles and promote angular diversity. $w_{\text{SZA}}$ comes from:
+
+$$w_{\text{SZA}, i} = n \cdot \frac{\cos(\theta_{s, i})}{\sum_{k=1}^n \cos(\theta_{s, k})}$$
+
+where $\cos(\theta_{s, i})$ scores the SZA at observation $i$
+
+and where multiplying by $n$ accounts for scaling to give average weights across all observations the value of 1
+
+$w_t$ comes from:
+
+$$w_{\text{t}, i} = \exp\left( -\frac{\vert{}t_i - t_{\text{median}}\vert{}}{\tau} \right)$$
+
+Where $t_{\text{median}}$ represents the center of a given temporal window. 
+
+And where $τ$ is the decay constant which can be adjusted according to the size of the window
+
+The angular weight $w_d$ is formulated by:
+
+$$w_{\text{d}, i} = n \cdot \frac{\sum_{k=1}^n \sqrt{(K_{\text{vol}}^{(i)} - K_{\text{vol}}^{(k)})^2 + (K_{\text{geo}}^{(i)} - K_{\text{geo}}^{(k)})^2}}{\sum_{m=1}^n \sum_{k=1}^n \sqrt{(K_{\text{vol}}^{(m)} - K_{\text{vol}}^{(k)})^2 + (K_{\text{geo}}^{(m)} - K_{\text{geo}}^{(k)})^2}}$$
+
+Where a simple euclidian distance is passed to the 2d kernel space to reward unique viewing geometries
+
+To consolidate the model, we use Iteratively Reweighted Least Squares (IRLS) where the BRDF curve is fitted with the most suitable weights by downweighting outliers and repeatedly solving for NNLS. To be able to optimize the weights with this approach, the residual error $e_i$ is derived from:
+
+$$e_i = \left\vert{} y_i - \left( f_{\text{iso}}^{(k)} + f_{\text{vol}}^{(k)} K_{\text{vol}, i} + f_{\text{geo}}^{(k)} K_{\text{geo}, i} \right) \right\vert{}$$
+
+Multiplying all four terms together, $w_i$ becomes:
+
+$$w_i = w_{\text{consolidated}, i} \cdot w_{\text{t}, i} \cdot w_{\text{SZA}, i} \cdot w_{\text{d}, i}$$
+
