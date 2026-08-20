@@ -137,3 +137,18 @@ Multiplying all four terms together, $w_i$ becomes:
 
 $$w_i = w_{\text{consolidated}, i} \cdot w_{\text{t}, i} \cdot w_{\text{SZA}, i} \cdot w_{\text{d}, i}$$
 
+### 3. General constellation model
+Using the described process, it is possible to capture the seasonal dynamics of the kernels and compare them to an established product. Selecting tile h20v11 as an example, the process is ran over 2025-01-01 to 2025-12-31 in sliding windows of 16 days to construct an even comparison against the MCD43A1 kernels and its seasonal fluctuations. For the given tile, the window that achieves the best fit is 25-11-01 to 25-11-17 with 21 observations in total and an RMSE of 0.0053. Figure 3 shows the distribution of modeled reflectance for this specific window.
+
+<img width="1377" height="1238" alt="afbeelding" src="https://github.com/user-attachments/assets/d5369152-65c4-4bd8-868f-3aa7590ce196" />
+
+**Figure 3**. Modeled reflectance at SZA 60, 45, 30 and 15 for window 11-01 - 11-17.
+
+The combined mean of all windows compared to the mean of MCD43A1 windows achieve promising results that suggest adequate coherence. 
+
+| Model | $f_{\text{iso}}$ | $f_{\text{vol}}$  | $f_{\text{geo}}$  | $R^2$ | RMSE | 
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Constellation | 0.078904 | 0.027370 | 0.014351 | 0.9713 | 0.004533 |
+| MCD43A1 (reference) | 0.081 | 0.034 | 0.018 | reference | reference |
+
+#### 3.1 Validation and assessment of sub-weekly measurements 
