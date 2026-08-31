@@ -1,5 +1,3 @@
-# niger-albedo-rainfall-dynamics
-
 # Introduction 
 Niger, a landlocked country belonging to the Sahel region of Africa, is characterized by a latitudinal rainfall gradient that transitions from the sudanian zone in the south to the Sahara in the north. The Iullemeden aquifer system acts as the country's primary perennial water source and a large part of the hydrological landscape features vernal pools and ephemeral streams. The country has increasingly become a focal point in research and discussions regarding efforts of reversing desertification. Due to Niger's sensitive climate, quantifying the surface energy partitioning along with it's albedo dynamics is vital for assessing the ecological health of a climate vulnerable nation.
 
