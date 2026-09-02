@@ -1,16 +1,5 @@
-# Introduction 
-Niger, a landlocked country belonging to the Sahel region of Africa, is characterized by a latitudinal rainfall gradient that transitions from the sudanian zone in the south to the Sahara in the north. The Iullemeden aquifer system acts as the country's primary perennial water source and a large part of the hydrological landscape features vernal pools and ephemeral streams. The country has increasingly become a focal point in research and discussions regarding efforts of reversing desertification. Due to Niger's sensitive climate, quantifying the surface energy partitioning along with it's albedo dynamics is vital for assessing the ecological health of a climate vulnerable nation.
-
-# Area of interest and transect
-The image above shows the transect which goes along the latitudinal gradient of 13.5° to 19.5°. 
-
-## Timeframe 
-This study compares the means of 2000-2004 to 2020-2024.
-
-## Comparative sensor analysis
-
 ### 1. Introduction
-Albedo, which plays an important role in this study, is expressed as a value between 0 and 1. It is generally defined as a surface's ability to reflect light where in an earth science context lower values are found in deep water, grass and asphalt, while clouds and snow yield high values. In the Nigerien and broader Sahelian context, the way albedo is used can vary depending on the objective. For a study focusing on trends of greening and land cover changes, white sky albedo, also referred to as bi-hemispherical reflectance is often used due to it making the source of incoming light diffuse as opposed to black sky albedo which instead relies on the angle at which incoming light will hit a surface.
+Albedo is defined as the fraction of incident solar radiation that is reflected by a surface in the shortwave radiation spectrum (Luo et al, 2005). Multi-decadal research in the field of optical remote sensing has formulated and put forth developments to facilitate the retrieval of albedo across different resolutions and space-borne satellites. The majority of natural earth surfaces are anistropical which is generally defined as the reflection of a given surface being directionally dependent while isotropy assumes a directionally independent reflection (Filip et al., 2015). For climate studies and environmental modeling contexts, the absolute accuracy required has been described as being between 0.02 - 0.05 (Sellers et al, 1995, Henderson-Sellers and Wilson, 1983, Cihlar et al, 1997). Quantifying surface albedo from space-borne satellite observations is highly dependent on sufficient angular sampling and diversity in order to produce temporally consistent measurements. The bidirectional reflectance distribution function (BRDF) describes the reflectance's dependence on an incident and view angle and BRDFs have been widely used to contextualize anistropical behavior (Lucht et al, 2000). One such BRDF model is the Ross-Thick-Li-Sparse Reciprocal (RTLSR) model which is categorised as a 'kernel-driven BRDF' model, and it has been integrated in the Moderate Resolution Imaging Spectroradiometer (MODIS) product as a result of its ability to describe the surface anisotropy (Zhang et al, 2018). in the design of such kernel-driven BRDF models, the anisotropic behaviors of geometric and volumetric scattering are acquired by kernels and scaled by dynamic weights (Wanner et al., 1999). In the case of white sky albedo (WSA) where diffuse illumination is assumed, the same dynamic weights are used in combination with constants that contextualize the simulated environment of a hemisphere emitting diffuse radiation. This is expressed as the joint sum of the isotropic, geometric and volumetric parameters.
 
 White sky albedo can be calculated by first calculating the black sky albedo:
 
@@ -128,7 +117,7 @@ $$w_{\text{d}, i} = n \cdot \frac{\sum_{k=1}^n \sqrt{(K_{\text{vol}}^{(i)} - K_{
 
 Where a simple euclidian distance is passed to the 2d kernel space to reward unique viewing geometries
 
-To consolidate the model, we use Iteratively Reweighted Least Squares (IRLS) where the BRDF curve is fitted with the most suitable weights by downweighting remaining outliers and repeatedly solving for NNLS. To be able to optimize the weights with this approach, the residual error $e_i$ is derived from:
+To consolidate the outcome, we use Iteratively Reweighted Least Squares (IRLS) where the BRDF curve is fitted with the most suitable weights by downweighting remaining outliers and repeatedly solving for NNLS. To be able to optimize the weights with this approach, the residual error $e_i$ is derived from:
 
 $$e_i = \left\vert{} y_i - \left( f_{\text{iso}}^{(k)} + f_{\text{vol}}^{(k)} K_{\text{vol}, i} + f_{\text{geo}}^{(k)} K_{\text{geo}, i} \right) \right\vert{}$$
 
@@ -137,17 +126,8 @@ Multiplying all four terms together, $w_i$ becomes:
 $$w_i = w_{\text{consolidated}, i} \cdot w_{\text{t}, i} \cdot w_{\text{SZA}, i} \cdot w_{\text{d}, i}$$
 
 ### 3. General constellation model
-Using the described process, it is possible to capture the seasonal dynamics of the kernels and compare them to an established product. Selecting tile h20v11 as an example, the process is ran over 2025-01-01 to 2025-12-31 in sliding windows of 16 days to construct an even comparison against the MCD43A1 kernels and its seasonal fluctuations. For the given tile, the window that achieves the best fit is 25-11-01 to 25-11-17 with 21 observations in total and an RMSE of 0.0053. Figure 3 shows the distribution of modeled reflectance for this specific window.
+
 
 <img width="1377" height="1240" alt="afbeelding" src="https://github.com/user-attachments/assets/129cb022-bc43-42ae-83f4-d40abb3da853" />
 
 **Figure 3**. Modeled reflectance of GEDI-derived canopy height at SZA 60, 45, 30 and 15.
-
-The combined mean of all windows compared to the mean of MCD43A1 windows achieve promising results that suggest adequate coherence. 
-
-| Model | $f_{\text{iso}}$ | $f_{\text{vol}}$  | $f_{\text{geo}}$  | $R^2$ | RMSE | 
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Constellation | 0.078904 | 0.027370 | 0.014351 | 0.9713 | 0.004533 |
-| MCD43A1 (reference) | 0.081 | 0.034 | 0.018 | reference | reference |
-
-#### 3.1 Validation and assessment of sub-weekly measurements 
