@@ -13,10 +13,17 @@ In turn, the WSA is derived from:
 
 $$\\text{wsa} = 2 \\int_{0}^{\\pi/2} \\text{bsa}(\\theta_i) \\sin(\\theta_i) \\cos(\\theta_i) , d\\theta_i$$
 
-Where the azimuthal integral is omitted because the theoretical athmospheric conditions in which WSA exists are azimuthally symmetric as previously mentioned. 
+Where the azimuthal integral is omitted because the theoretical athmospheric conditions in which WSA exists are azimuthally symmetric as previously mentioned. Regarding the field of optical remote sensing, it differentiates between passive and active means, where passive remote sensing implies inference from an external source like the sun, whereas active remote sensing techniques as seen in Synthetic Aperture Radar (SAR) and Light Detection And Ranging (LiDAR) are able to operate independently of the external source (Verhoef, 1998). 
 
 
-### 2. Sensor consistency and Cross-Validation Analysis
+### 2. Materials
+
+#### 2.1. GEDI-derived canopy metrics
+
+
+
+
+
 Producing albedo measurements for a time series analysis of 24 years poses a specific challenge concerning orbital drift and sensor bias. The MODIS product which belongs to the Terra and Aqua satellites launched in 1999 and 2002, has been used frequently as a common approach to studies involving the quantification of albedo, however, recent evaluations (Feng et al., 2024) have suggested that while the influence of orbital drift is small, it could be biased in the context of a time series analysis. Cross validation was done using the VIIRS product (VNP43MA3) which was designed to be the successor of the MODIS product that was first launched in 2011 aboard of the NPP Suomi satellite. As opposed to MODIS MCD43A3 which has a resolution of 500 meters, the VNP43MA3 product has a native resolution of 1km which is reprojected to 500m in order to match MODIS. The bidirectional reflectance distribution function (BRDF) serves as a main mechanism in conceptualizing the behavior of anisotropic reflectance in relation to the viewing angle. Anisotropy is generally defined as the reflection of a given surface being directionally dependent while isotropy assumes a directionally independent reflection (Filip et al., 2015). Such properties play prominent roles in the design of kernel-driven BRDF models where the anisotropic behaviors of geometric and volumetric scattering are acquired by kernels and scaled by dynamic weights as seen in the Ross-Li model (Wanner et al., 1999). In the case of white sky albedo (WSA) where diffuse illumination is assumed, the same dynamic weights are used in combination with constants that contextualize the simulated environment of a hemisphere emitting diffuse radiation. This is expressed as the joint sum of the isotropic, geometric and volumetric parameters.
 
 $$\\text{wsa} = f_{iso} + (0.189184 \cdot f_{vol}) + (-1.377622 \cdot f_{geo})$$
