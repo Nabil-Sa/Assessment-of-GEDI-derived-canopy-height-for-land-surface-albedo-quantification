@@ -13,10 +13,10 @@ In turn, the WSA is derived from:
 
 $$\\text{wsa} = 2 \\int_{0}^{\\pi/2} \\text{bsa}(\\theta_i) \\sin(\\theta_i) \\cos(\\theta_i) , d\\theta_i$$
 
-Where the azimuthal integral is omitted because the theoretical athmospheric conditions in which WSA exists are azimuthally symmetric as previously mentioned. Regarding the field of optical remote sensing, it differentiates between passive and active means, where passive remote sensing implies inference from an external source like the sun, whereas active remote sensing techniques as seen in Synthetic Aperture Radar (SAR) and Light Detection And Ranging (LiDAR) are able to operate independently of the external source (Verhoef, 1998). 
+Where the azimuthal integral is omitted because the theoretical athmospheric conditions in which WSA exists are azimuthally symmetric as previously mentioned. Regarding the field of optical remote sensing, it differentiates between passive and active means, where passive remote sensing implies inference from an external source like the sun, whereas active remote sensing techniques as seen in Synthetic Aperture Radar (SAR) and Light Detection And Ranging (LiDAR) are able to operate independently of the external source (Verhoef, 1998). Regarding active remote sensing, space-borne LiDAR offers the means to synthesize and interpret the three-dimensional structural makeup of a target to derive biophysical parameters. LiDAR is broadly categorised as utilizing either pulsed ranging or continuous wave (CW) as the operating mode, where pulsed ranging is currently still the most widely used, which can be attributed to several reasons such as its high penetration capabilities over long distances and its lower sensitivity to electromagnetic degradation (Wang et al, 2024). Furthermore, when deriving the three-dimensional structural makeup with LiDAR, there is a distinction between full waveform sampling and discreet sampling in the amplitude of energy distribution, where full waveform sampling measures the amplitude of energy continuously, while discreet sampling records some points above a predefined threshold of returning energy amplitude, leading to a waveform profile less indicative of the canopy structure, though both methods are able to derive the canopy height (Lim et al, 2003).
 
 
-### 2. Materials
+### 2. Materials and Methods
 
 #### 2.1. GEDI-derived canopy metrics
 
